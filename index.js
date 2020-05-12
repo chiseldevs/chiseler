@@ -4,7 +4,7 @@ process.chdir(__dirname);
 
 // Utils
 const { logError } = require('./utils/log');
-
+const { token } = require('./config')
 const bot = require('./bot');
 
 bot.use(
@@ -20,5 +20,5 @@ bot.catch(logError);
 // bot.launch();
 
 bot.telegram.deleteWebhook().then();
-bot.telegram.setWebhook(`${process.env.URL}/bot${process.env.TOKEN}`).then();
-bot.startWebhook(`/bot${process.env.TOKEN}`, null, process.env.PORT);
+bot.telegram.setWebhook(`https://chiseler.herokuapp.com/bot${token}`).then();
+bot.startWebhook(`/bot${token}`, null, 5000);
