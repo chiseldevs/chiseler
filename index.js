@@ -21,4 +21,4 @@ bot.catch(logError);
 
 bot.telegram.deleteWebhook().then();
 bot.telegram.setWebhook(`${process.env.URL}/bot${process.env.TOKEN}`).then();
-bot.startWebhook(`/bot${process.env.TOKEN}`, null, 5000);
+bot.startWebhook(`/bot${process.env.TOKEN}`, null, process.env.PORT);
