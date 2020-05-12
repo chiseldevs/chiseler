@@ -1,0 +1,4 @@
+{"status":"admin","warns":[],"first_name":"𝕲𝖊𝖓𝖊𝖒𝖆𝖙𝖔𝖗 𝖇𝖌","last_name":"","id":756870298,"username":"genemator","_id":"FDEoCfxw42mOVRMy"}
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+{"$$indexCreated":{"fieldName":"status","unique":false,"sparse":false}}
+{"$$indexCreated":{"fieldName":"username","unique":true,"sparse":true}}

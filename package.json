@@ -1,0 +1,52 @@
+{
+  "name": "chiseler",
+  "version": "2.0.0",
+  "description": "Telegram developer's group manager.",
+  "main": "index.js",
+  "scripts": {
+    "postversion": "git push --atomic --follow-tags origin develop develop:master",
+    "start": "node index",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/genemators/chiseller.git"
+  },
+  "keywords": [
+    "bot",
+    "chisel",
+    "chiseller",
+    "telegram"
+  ],
+  "author": "Genemator Sakhib <genemators@gmail.com> (https://bsba.uz/genemator)",
+  "contributors": [
+    "Mukhammadyusuf Abdurakhimov <> (https://bsba.uz/mrabdurakhimov/)"
+  ],
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/genemators/chiseller/issues"
+  },
+  "homepage": "https://chisel.uz",
+  "dependencies": {
+    "daggy": "^1.3.0",
+    "dedent-js": "^1.0.1",
+    "millisecond": "^0.1.2",
+    "nedb-promise": "^2.0.1",
+    "node-fetch": "^2.2.0",
+    "ramda": "^0.25.0",
+    "require-directory": "^2.1.1",
+    "spamwatch": "^0.2.0",
+    "telegraf": "^3.38.0",
+    "tg-html": "gist:f9e184b78bbfc4419bc1ee70c238ca6f",
+    "xregexp": "^4.2.0"
+  },
+  "engines": {
+    "node": ">=12.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.2",
+    "eslint": "^6.0.1",
+    "typescript": "^3.8.3"
+  }
+}
