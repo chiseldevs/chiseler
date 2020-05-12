@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postversion": "git push --atomic --follow-tags origin develop develop:master",
-    "start": "node index",
+    "start": "node index --unhandled-rejection",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
