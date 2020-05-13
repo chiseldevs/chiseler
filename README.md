@@ -4,9 +4,6 @@
 </p>
 Chiseller is a Telegram bot made to help admins manage their groups.
 
-
-Now you can add the bot as **administrator** to your groups.
-
 ## Features
 * Synchronized database across multiple groups.
 * Adding admins to the bot.
