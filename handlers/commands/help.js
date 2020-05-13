@@ -3,16 +3,16 @@ const { Markup } = require('telegraf');
 const { homepage } = require('../../package.json');
 
 const message = `\
-Salom hurmatli foydalanuvchilar!
+Salom hurmatli foydalanuvchi!
 
-Men shu guruhning <b>administrativ</b> botiman va \
-shu <b>guruhni</b> <b>spam va floodchilardan</b> toza saqlashga yordam beraman
+Men Chisel Devs guruhlarining <b>administrativ</b> botiman va \
+Chisel Devs <b>guruhlarini</b> <b>spam va floodchilardan</b> toza saqlashga yordam beraman.
 
-<code>/commands</code> komadasini ishlatish mumkin bolgan komandalarni ro'yxatini korish uchun yuboring.
+<code>/commands</code> komadasini, ishlatish mumkin bolgan komandalarni ro'yxatini korish uchun yuboring.
 
 Iltimos komandaga uzoq vaqt damovida javob bersam, \
-menga ortiqcha yozib o'tirmang. Ban berib yuborishim \
-<b>MUMKIN!</b>
+ozgina sabrli bo'ling va menga ortiqcha yozib o'tirmang. \
+O'ylab o'tirmay ban berib yuborishim <b>MUMKIN!</b>
 `;
 
 /** @param { import('../../typings/context').ExtendedContext } ctx */
