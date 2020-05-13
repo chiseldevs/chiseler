@@ -2,7 +2,8 @@
 
 const msgAlreadyDeleted = 'Noto\'gri urinish: o\'chirilishi kerak bo\'lgan habar topilmadi.';
 
-/** @param { import('telegraf').ContextMessageUpdate } ctx */
+/** @param { import('telegraf').ContextMessageUpdate } ctx
+ */
 module.exports = (ctx, next) => {
 	ctx.tg.deleteMessage = async (chat_id, message_id) => {
 		try {

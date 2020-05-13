@@ -23,4 +23,4 @@ bot.launch({
 		hookPath: '/bot',
 		port: process.env.PORT
 	}
-}).then(r => console.log(r));
+}).then();
