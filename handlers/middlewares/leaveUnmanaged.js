@@ -11,16 +11,16 @@ const pkg = require('../../package.json');
 
 
 const caption = `\
-Xuyet qilayabsanlarmi? \
-Men nimaga senlarga ishlashim kerak?
+Kechirasiz siz mani yaratuvchimmisiz? \
+O'zingizga boshqa bot yaratib dasturlashtirvoling!
 
-Duxing yetsa borib o'zing kod yoz, \
-va gruppanga egalik qil!
+Agar qiyin bo'lsa bizning guruhimizga o'tib, \
+dasturlashni o'rganing va dasturlang!
 `;
 
 const inline_keyboard = [ [ {
-	text: 'Websaytimiz',
-	url: pkg.homepage,
+	text: 'Guruhimiz',
+	url: 'https://t.me/iBlogs_community',
 } ] ];
 
 const reply_markup = JSON.stringify({ inline_keyboard });

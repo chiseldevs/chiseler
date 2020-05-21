@@ -17,6 +17,8 @@ bot.use(
 
 bot.catch(logError);
 
+// bot.launch().then(r => console.log(r))
+
 bot.launch({
 	webhook: {
 		domain: process.env.URL,
