@@ -19,8 +19,8 @@ dasturlashni o'rganing va dasturlang!
 `;
 
 const inline_keyboard = [ [ {
-	text: 'Guruhimiz',
-	url: 'https://t.me/iBlogs_community',
+	text: 'Websaytimiz',
+	url: pkg.homepage,
 } ] ];
 
 const reply_markup = JSON.stringify({ inline_keyboard });
