@@ -1,5 +1,5 @@
 {
-  "name": "the_guard_bot",
+  "name": "chiseler",
   "version": "1.4.0",
   "description": "Telegram guard bot to manage network of groups.",
   "main": "index.js",
@@ -11,24 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheDevs-Network/bot.git"
+    "url": "git+https://github.com/chiseldevs/chiseler.git"
   },
   "keywords": [
     "bot",
     "the guard",
-    "thedevs",
+    "chisel",
     "telegram"
   ],
-  "author": "Thomas Rory Gummerson <thomas@gummerson.no> (https://trgwii.no)",
-  "contributors": [
-    "Pouria Ezzati <pouria@thedevs.network> (https://thedevs.network)",
-    "Wojciech Pawlik <woj.pawlik@gmail.com>"
-  ],
+  "author": "Genemator Sakhib <genemators@gmail.com> (https://genemator.me)",
+  "contributors": [],
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/TheDevs-Network/the-guard-bot/issues"
+    "url": "https://github.com/chiseldevs/chiseler/issues"
   },
-  "homepage": "https://github.com/TheDevs-Network/the-guard-bot/",
+  "homepage": "https://github.com/chiseldevs/chiseler/",
   "dependencies": {
     "dedent-js": "^1.0.1",
     "jspack": "0.0.4",
