@@ -70,13 +70,13 @@ All commands and actions are synchronized across all of the groups managed by th
 
 If used by reply, `/ban` and `/warn` would remove the replied-to message.
 
-The bot is still in beta phase so feel free to [open issues](https://github.com/thedevs-network/the-guard-bot/issues/new) and ask for features.
+The bot is still in beta phase so feel free to [open issues](https://github.com/chiseldevs/chiseler/issues/new) and ask for features.
 
-[**Roadmap**](https://github.com/TheDevs-Network/the-guard-bot/projects/1)
+[**Roadmap**](https://github.com/chiseldevs/chisel/projects/1)
 
 ---
 
-> Important Note: Under the AGPL-3.0 license, if you're running your own instance, you should add a link to the source [(this repository)](https://github.com/TheDevs-Network/the-guard-bot) in your bot's bio. If you're modifying this source and making your own bot, you should link to the source of your own version of the bot according to the AGPL-3.0 license. Check [LICENSE](LICENSE) for more info.
+> Important Note: Under the AGPL-3.0 license, if you're running your own instance, you should add a link to the source [(this repository)](https://github.com/chiseldevs/chiseler) in your bot's bio. If you're modifying this source and making your own bot, you should link to the source of your own version of the bot according to the AGPL-3.0 license. Check [LICENSE](LICENSE) for more info.
 
 <p align="center"><img src="https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/images/nord/repository-footer-separator.svg?sanitize=true" /></p>
 
