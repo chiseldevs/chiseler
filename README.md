@@ -2,7 +2,7 @@
 
 <h2 align="center">Chisel Devs Guard Bot</h2>
 
-<p align="center"><a href="https://t.me/westmans_bot"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Heroku&message=will%20be%20deployed%20in%20future%20releases&logoColor=eceff4&logo=github&colorA=4c566a&colorB=88c0d0"/></a></p>
+<p align="center"><a href="https://t.me/chiseler"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Heroku&message=will%20be%20deployed%20in%20future%20releases&logoColor=eceff4&logo=github&colorA=4c566a&colorB=88c0d0"/></a></p>
 
 <p align="center"> Elegant Group Manager for <a href="https://wiut.uz" target="_blank">Chisel Devs</a> groups.</p>
 
