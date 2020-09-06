@@ -8,11 +8,6 @@
 
 <p align="center">Respect each other and love the beautiful rules with our <a href="https://t.me/chiseler_bot" target="_blank">telegram manager bot</a>.</p>
 
-**NOTE: The Guard is in beta phase;**
-**it has known issues, but it's successfully being used in production**
-
-If you need help with using the Bot or setting it up, join our [Support Chat](https://t.me/theguardsupport).
-
 ## Setup
 You need [Node.js](https://nodejs.org/) (>= 12) to run this bot.
 
