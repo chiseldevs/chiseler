@@ -1,10 +1,13 @@
 'use strict';
 
-const html = require('tg-html');
 const R = require('ramda');
 
-const { parse } = require('../../utils/parse');
-const { link, scheduleDeletion } = require('../../utils/tg');
+const { html } = require('../../utils/html');
+const { parse } = require('../../utils/cmd');
+const { scheduleDeletion } = require('../../utils/tg');
+
+const link = ({ id, first_name }) =>
+	html`<a href="tg://user?id=${id}">${first_name}</a>`;
 
 /** @param { import('../../typings/context').ExtendedContext } ctx */
 module.exports = async (ctx) => {
@@ -14,13 +17,13 @@ module.exports = async (ctx) => {
 
 	if (!(flags.has('msg_id') || ctx.message.reply_to_message)) {
 		// eslint-disable-next-line max-len
-		await ctx.replyWithHTML('ℹ️ <b>O\'chirmoqchi bo\'lgan habaringizni ko\'rsating.</b>').then(scheduleDeletion());
+		await ctx.replyWithHTML('ℹ️ <b>Reply to a message you\'d like to delete</b>').then(scheduleDeletion());
 		return;
 	}
 
 	await ctx.tg.deleteMessage(
 		flags.get('chat_id') || ctx.chat.id,
-		flags.get('msg_id') || ctx.message.reply_to_message.message_id
+		flags.get('msg_id') || ctx.message.reply_to_message.message_id,
 	);
 
 	if (reason) {

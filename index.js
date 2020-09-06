@@ -1,6 +1,8 @@
+// @ts-check
 'use strict';
 
 process.chdir(__dirname);
+require('ts-node').register({ transpileOnly: true });
 
 // Utils
 const { logError } = require('./utils/log');
@@ -17,10 +19,5 @@ bot.use(
 
 bot.catch(logError);
 
-bot.launch({
-	webhook: {
-		domain: process.env.URL,
-		hookPath: '/bot',
-		port: process.env.PORT
-	}
-}).then();
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
+bot.launch();

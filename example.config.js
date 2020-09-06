@@ -7,7 +7,7 @@
  */
 
 /*
- * Create `config.js` by running `cp config.js config.js`
+ * Create `config.js` by running `cp example.config.js config.js`
  * in the project folder, then edit it.
  *
  * Config file in JSON format (`config.json`) is also supported.
@@ -32,13 +32,13 @@ const config = {
 	 * the person who can promote and demote admins,
 	 * and add the bot to groups.
 	 */
-	master: process.env.MASTER,
+	master: 123456789,
 
 	/**
 	 * @type {!string}
 	 * Telegram Bot token obtained from https://t.me/BotFather.
 	 */
-	token: process.env.TOKEN,
+	token: '',
 
 
 	chats: {
@@ -55,7 +55,7 @@ const config = {
 		 * Chat to send report notifications to.
 		 * Pass false to disable this feature.
 		 */
-		report: -1001265220965,
+		report: -1001148607297,
 	},
 
 	/**

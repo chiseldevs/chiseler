@@ -2,11 +2,9 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"module": "CommonJS",
-		"noImplicitAny": false,
 		"noEmit": true,
-		"resolveJsonModule": true,
-		"strictNullChecks": false,
+		"noImplicitAny": false,
 		"strict": true,
-		"target": "ES2020"
+		"target": "ES2019"
 	}
 }

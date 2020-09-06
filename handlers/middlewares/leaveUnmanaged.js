@@ -1,9 +1,6 @@
 'use strict';
 
-// Utils
-const { logError } = require('../../utils/log');
-
-const { managesGroup } = require('../../stores/group');
+const { managesGroup, migrateGroup } = require('../../stores/group');
 
 const { chats = {} } = require('../../utils/config').config;
 
@@ -11,15 +8,15 @@ const pkg = require('../../package.json');
 
 
 const caption = `\
-Kechirasiz siz mani yaratuvchimmisiz? \
-O'zingizga boshqa bot yaratib dasturlashtirvoling!
+Sorry, you need to set up your own instance \
+to use me in your group or a network of groups.
 
-Agar qiyin bo'lsa bizning guruhimizga o'tib, \
-dasturlashni o'rganing va dasturlang!
+If you don't wish to self host, \
+you can try @MissRose_bot instead.
 `;
 
 const inline_keyboard = [ [ {
-	text: 'Websaytimiz',
+	text: '🛠 Setup a New Bot',
 	url: pkg.homepage,
 } ] ];
 
@@ -30,21 +27,26 @@ const gifIds = [
 	'l2Sqc3POpzkj5r8SQ',
 	'StaMzjNkq5PqM',
 	'fjYDN5flDJ756',
-	'3XiQswSmbjBiU'
+	'3XiQswSmbjBiU',
 ];
 
 const gifs = gifIds.map(x => `https://media.giphy.com/media/${x}/giphy.gif`);
 
 
 /**
- * @param {Array} arr An anonymous array
- * @returns {Number} A random number
+ * @template T
+ * @param {Array<T>} arr
  */
 const randomChoice = arr => arr[Math.floor(Math.random() * arr.length)];
 
 
-/** @param { import('telegraf').ContextMessageUpdate } ctx */
+/** @param { import('telegraf').Context } ctx */
 const leaveUnmanagedHandler = async (ctx, next) => {
+	if (!ctx.message) return next();
+	if (ctx.message.migrate_from_chat_id) {
+		return migrateGroup(ctx.message.migrate_from_chat_id, ctx.chat.id);
+	}
+
 	if (
 		ctx.chat.type === 'private' ||
 		Object.values(chats).includes(ctx.chat.id) ||
@@ -55,7 +57,7 @@ const leaveUnmanagedHandler = async (ctx, next) => {
 	try {
 		await ctx.replyWithVideo(randomChoice(gifs), { caption, reply_markup });
 	} catch (err) {
-		logError(err);
+		// do nothing
 	}
 	await ctx.telegram.leaveChat(ctx.chat.id);
 	return next();

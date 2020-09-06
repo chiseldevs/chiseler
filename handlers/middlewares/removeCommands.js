@@ -11,7 +11,7 @@ const shouldDelete = {
 };
 
 if (!(deleteCommands in shouldDelete)) {
-	throw new Error('`deleteCommands` uchun config dagi mavjud bo\'magan qiymat: ' +
+	throw new Error('Invalid value for `deleteCommands` in config file: ' +
 		deleteCommands);
 }
 

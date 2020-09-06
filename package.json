@@ -1,44 +1,47 @@
 {
-  "name": "chiseler",
-  "version": "2.0.0",
-  "description": "Telegram developer's group manager.",
+  "name": "the_guard_bot",
+  "version": "1.4.0",
+  "description": "Telegram guard bot to manage network of groups.",
   "main": "index.js",
   "scripts": {
     "postversion": "git push --atomic --follow-tags origin develop develop:master",
     "start": "node index",
-    "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --ext .ts --ext .js .",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/genemators/chiseller.git"
+    "url": "git+https://github.com/TheDevs-Network/bot.git"
   },
   "keywords": [
     "bot",
-    "chisel",
-    "chiseller",
+    "the guard",
+    "thedevs",
     "telegram"
   ],
-  "author": "Genemator Sakhib <genemators@gmail.com> (https://bsba.uz/genemator)",
+  "author": "Thomas Rory Gummerson <thomas@gummerson.no> (https://trgwii.no)",
   "contributors": [
-    "Mukhammadyusuf Abdurakhimov <> (https://bsba.uz/mrabdurakhimov/)"
+    "Pouria Ezzati <pouria@thedevs.network> (https://thedevs.network)",
+    "Wojciech Pawlik <woj.pawlik@gmail.com>"
   ],
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/genemators/chiseller/issues"
+    "url": "https://github.com/TheDevs-Network/the-guard-bot/issues"
   },
-  "homepage": "https://chisel.uz",
+  "homepage": "https://github.com/TheDevs-Network/the-guard-bot/",
   "dependencies": {
-    "daggy": "^1.3.0",
     "dedent-js": "^1.0.1",
+    "jspack": "0.0.4",
     "millisecond": "^0.1.2",
     "nedb-promise": "^2.0.1",
     "node-fetch": "^2.2.0",
     "ramda": "^0.25.0",
     "require-directory": "^2.1.1",
     "spamwatch": "^0.2.0",
+    "string-replace-async": "^1.2.1",
     "telegraf": "^3.38.0",
-    "tg-html": "gist:f9e184b78bbfc4419bc1ee70c238ca6f",
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3",
     "xregexp": "^4.2.0"
   },
   "engines": {
@@ -46,7 +49,14 @@
   },
   "devDependencies": {
     "@types/node": "^13.13.2",
-    "eslint": "^6.0.1",
-    "typescript": "^3.8.3"
+    "@types/node-fetch": "^2.5.7",
+    "@types/ramda": "^0.25.51",
+    "@types/xregexp": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "2.0.5"
   }
 }

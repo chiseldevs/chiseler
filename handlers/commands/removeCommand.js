@@ -3,51 +3,44 @@
 // DB
 const { getCommand, removeCommand } = require('../../stores/command');
 
-// Bot
-const { replyOptions } = require('../../bot/options');
+const { isMaster } = require('../../utils/config');
 
 /** @param { import('../../typings/context').ExtendedContext } ctx */
-const removeCommandHandler = async ({ chat, message, reply, state }) => {
-	const { isAdmin, isMaster } = state;
+const removeCommandHandler = async ({ from, chat, message, replyWithHTML }) => {
 	const { text } = message;
 	if (chat.type !== 'private') return null;
 
-	if (!isAdmin) {
-		return reply(
-			'ℹ️ <b>Afsuski, faqat adminlar bu komandadan foydalana oladi.</b>',
-			replyOptions
+	if (from.status !== 'admin') {
+		return replyWithHTML(
+			'ℹ️ <b>Sorry, only admins access this command.</b>',
 		);
 	}
 	const [ , commandName ] = text.split(' ');
 	if (!commandName) {
-		return reply(
-			'<b>Mavjud bo\'lgan komandani jo\'nating.</b>\n\nMasalan:\n' +
+		return replyWithHTML(
+			'<b>Send a valid command.</b>\n\nExample:\n' +
 			'<code>/removecommand rules</code>',
-			replyOptions
 		);
 	}
 
 	const command = await getCommand({ name: commandName.toLowerCase() });
 	if (!command) {
-		return reply(
-			'ℹ️ <b>Komanda topilmayabdi.</b>',
-			replyOptions
+		return replyWithHTML(
+			'ℹ️ <b>Command couldn\'t be found.</b>',
 		);
 	}
 
 	const role = command.role.toLowerCase();
-	if (role === 'master' && !isMaster) {
-		return reply(
-			'ℹ️ <b>Afsuski, faqat senpai bu komandani olib tashlay oladi.</b>',
-			replyOptions
+	if (role === 'master' && !isMaster(from)) {
+		return replyWithHTML(
+			'ℹ️ <b>Sorry, only master can remove this command.</b>',
 		);
 	}
 
 	await removeCommand({ name: commandName.toLowerCase() });
-	return reply(
+	return replyWithHTML(
 		`✅ <code>!${commandName}</code> ` +
-		'<b>komanda muvaffaqiyatli olib tashlandi.</b>',
-		replyOptions
+		'<b>has been removed successfully.</b>',
 	);
 };
 

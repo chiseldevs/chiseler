@@ -4,23 +4,12 @@
 const millisecond = require('millisecond');
 const { telegram } = require('../bot');
 
-const html = require('tg-html');
+const { html, lrm } = require('./html');
 const R = require('ramda');
 
 const replyId = R.path([ 'reply_to_message', 'message_id' ]);
 
-const isCommand = R.pipe(
-	R.defaultTo({}),
-	R.path([ 'entities', 0 ]),
-	R.defaultTo({}),
-	R.whereEq({ offset: 0, type: 'bot_command' }),
-);
-
-const escapeHtml = s => s
-	.replace(/&/g, '&amp;')
-	.replace(/"/g, '&quot;')
-	.replace(/'/g, '&#39;')
-	.replace(/</g, '&lt;');
+const { isCommand } = require('../utils/cmd');
 
 const inlineKeyboard = (...inline_keyboard) =>
 	({ reply_markup: { inline_keyboard } });
@@ -29,17 +18,17 @@ const msgLink = msg =>
 	`https://t.me/c/${msg.chat.id.toString().slice(4)}/${msg.message_id}`;
 
 const link = ({ id, first_name }) =>
-	html`<a href="tg://user?id=${id}">${first_name}</a>`;
+	html`${lrm}<a href="tg://user?id=${id}">${first_name}</a> [<code>${id}</code>]`;
 
 const quietLink = (user) =>
 	user.username
 		? html`<a href="t.me/${user.username}">${user.first_name}</a>`
-		: link(user);
+		: html`<a href="tg://user?id=${user.id}">${user.first_name}</a>`;
 
 const displayUser = user =>
 	user.first_name
 		? link(user)
-		: html`<code>${user.id}</code> id dagi foydalanuvchi`;
+		: html`[<code>${user.id}</code>]`;
 
 /** @param {number | string | false} ms */
 const deleteAfter = ms => (ctx, next) => {
@@ -56,7 +45,7 @@ const scheduleDeletion = (ms = 5 * 60 * 1000) => message => {
 	if (chat.type !== 'private' && ms !== false) {
 		message.timeout = setTimeout(
 			() => telegram.deleteMessage(chat.id, message_id),
-			millisecond(ms)
+			millisecond(ms),
 		);
 	}
 
@@ -66,7 +55,6 @@ const scheduleDeletion = (ms = 5 * 60 * 1000) => message => {
 module.exports = {
 	deleteAfter,
 	displayUser,
-	escapeHtml,
 	inlineKeyboard,
 	isCommand,
 	link,

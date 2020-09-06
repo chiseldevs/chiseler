@@ -1,13 +1,12 @@
 'use strict';
 
 // Utils
+const { html } = require('../../utils/html');
 const { isMaster } = require('../../utils/config');
 const { link, scheduleDeletion } = require('../../utils/tg');
-const { logError } = require('../../utils/log');
-const { parse, strip } = require('../../utils/parse');
+const { parse, strip } = require('../../utils/cmd');
 
 // Bot
-const { replyOptions } = require('../../bot/options');
 const { telegram } = require('../../bot');
 
 // DB
@@ -30,45 +29,37 @@ const tgUnadmin = async (userToUnadmin) => {
 };
 
 /** @param { import('../../typings/context').ExtendedContext } ctx */
-const unAdminHandler = async ({ from, message, reply }) => {
+const unAdminHandler = async ({ from, message, replyWithHTML }) => {
 	if (!isMaster(from)) return null;
 
 	const { targets } = parse(message);
 
 	if (targets.length !== 1) {
-		return reply(
-			'ℹ️ <b>Adminlik huquqini olib taylamoqchi bo\'lgan foydalanuvchini ko\'rsating.</b>',
-			replyOptions
+		return replyWithHTML(
+			'ℹ️ <b>Specify one user to unadmin.</b>',
 		).then(scheduleDeletion());
 	}
 
 	const userToUnadmin = await getUser(strip(targets[0]));
 
 	if (!userToUnadmin) {
-		return reply(
-			'❓ <b>No\'malum foydalanuvchi.</b>',
-			replyOptions
+		return replyWithHTML(
+			'❓ <b>User unknown.</b>',
 		).then(scheduleDeletion());
 	}
 
 	if (userToUnadmin.status !== 'admin') {
-		return reply(
-			`ℹ️ ${link(userToUnadmin)} <b>admin emas.</b>`,
-			replyOptions
+		return replyWithHTML(
+			html`ℹ️ ${link(userToUnadmin)} <b>is not admin.</b>`,
 		);
 	}
 
-	tgUnadmin(userToUnadmin);
+	await tgUnadmin(userToUnadmin);
 
-	try {
-		await unadmin(userToUnadmin);
-	} catch (err) {
-		logError(err);
-	}
+	await unadmin(userToUnadmin);
 
-	return reply(
-		`❗️ ${link(userToUnadmin)} <b>boshqa admin emas.</b>`,
-		replyOptions
+	return replyWithHTML(
+		html`❗️ ${link(userToUnadmin)} <b>is no longer admin.</b>`,
 	);
 };
 

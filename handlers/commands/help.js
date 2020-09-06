@@ -3,16 +3,19 @@ const { Markup } = require('telegraf');
 const { homepage } = require('../../package.json');
 
 const message = `\
-Salom hurmatli foydalanuvchi!
+Hey there!
 
-Men Chisel Devs guruhlarining <b>administrativ</b> botiman va \
-Chisel Devs <b>guruhlarini</b> <b>spam va floodchilardan</b> toza saqlashga yordam beraman.
+I'm an <b>administration</b> bot that helps you to keep \
+your <b>groups</b> safe from <b>spammers.</b>
 
-<code>/commands</code> komadasini, ishlatish mumkin bolgan komandalarni ro'yxatini korish uchun yuboring.
+Send /commands to get the list of available commands.
 
-Iltimos komandaga uzoq vaqt damovida javob bersam, \
-ozgina sabrli bo'ling va menga ortiqcha yozib o'tirmang. \
-O'ylab o'tirmay ban berib yuborishim <b>MUMKIN!</b>
+If you want to use me for your groups, \
+note that I'm more useful on a network of groups and \
+you also need to <b>setup a new bot.</b>
+
+So if you don't wish to self-host, @MissRose_bot \
+might be a better choice for you.
 `;
 
 /** @param { import('../../typings/context').ExtendedContext } ctx */
@@ -22,7 +25,7 @@ const helpHandler = ({ chat, replyWithHTML }) => {
 	return replyWithHTML(
 		message,
 		Markup.inlineKeyboard([
-			Markup.urlButton('📲 Websaytimiz', homepage)
+			Markup.urlButton('🛠 Setup a New Bot', homepage)
 		]).extra()
 	);
 };

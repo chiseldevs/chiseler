@@ -5,7 +5,6 @@ const { addCommand, getCommand } = require('../../stores/command');
 
 // Bot
 const { Markup } = require('telegraf');
-const { replyOptions } = require('../../bot/options');
 
 const Cmd = require('../../utils/cmd');
 const { isMaster } = require('../../utils/config');
@@ -30,8 +29,8 @@ const roleBtn = (btRole, { newCommand, currentRole }) => {
 };
 
 const roleKbRow = (cmdData) => [
-	roleBtn('Adminlar', cmdData),
-	roleBtn('Hamma', cmdData),
+	roleBtn('Admins', cmdData),
+	roleBtn('Everyone', cmdData),
 ];
 
 const normalizeRole = (role = '') => {
@@ -48,9 +47,8 @@ const addCommandHandler = async (ctx) => {
 	const { id } = ctx.from;
 
 	if (ctx.from.status !== 'admin') {
-		return reply(
-			'ℹ️ <b>Afsuski, faqat adminlar bu komadadan foydalanishi mumkin.</b>',
-			replyOptions
+		return ctx.replyWithHTML(
+			'ℹ️ <b>Sorry, only admins access this command.</b>',
 		);
 	}
 
@@ -59,16 +57,15 @@ const addCommandHandler = async (ctx) => {
 
 	const isValidName = /^!?(\w+)$/.exec(commandName);
 	if (!isValidName) {
-		return reply(
+		return ctx.replyWithHTML(
 			'<b>Send a valid command.</b>\n\nExample:\n' +
 			'<code>/addcommand rules</code>',
-			replyOptions
 		);
 	}
 	const newCommand = isValidName[1].toLowerCase();
 	if (preserved.has(newCommand)) {
-		return reply('❗️ Siz bu ism ishlata olmaysiz, bu nom egallangan.\n\n' +
-			'Boshqasida urinib ko\'ring.');
+		return reply('❗️ Sorry you can\'t use this name, it\'s preserved.\n\n' +
+			'Try another one.');
 	}
 
 	const replaceCmd = flags.has('replace');
@@ -79,20 +76,20 @@ const addCommandHandler = async (ctx) => {
 	if (!replaceCmd && cmdExists) {
 		return ctx.replyWithHTML(
 			'ℹ️ <b>This command already exists.</b>\n\n' +
-			'/commands - to\'liq komandalar ro\'yxatini ko\'rish.\n' +
-			'/addcommand <code>&lt;nom&gt;</code> - komanda yaratish uchun.\n' +
-			'/removecommand <code>&lt;nom&gt;</code>' +
-			' - komandani olib tashash uchun.',
+			'/commands - to see the list of commands.\n' +
+			'/addcommand <code>&lt;name&gt;</code> - to add a command.\n' +
+			'/removecommand <code>&lt;name&gt;</code>' +
+			' - to remove a command.',
 			Markup.keyboard([ [ `/addcommand -replace ${newCommand}` ] ])
+				.selective()
 				.oneTime()
 				.resize()
-				.extra()
+				.extra(),
 		);
 	}
 	if (cmdExists && cmdExists.role === 'master' && !isMaster(ctx.from)) {
-		return ctx.reply(
-			'ℹ️ <b>Afsuski, only bu komandani faqat master almashita oladi.</b>',
-			replyOptions
+		return ctx.replyWithHTML(
+			'ℹ️ <b>Sorry, only master can replace this command.</b>',
 		);
 	}
 
@@ -109,9 +106,9 @@ const addCommandHandler = async (ctx) => {
 			...softReplace || { content },
 		});
 		return ctx.replyWithHTML(
-			`✅ <b><code>!${isValidName[1]}</code> muvaffaqiyatli saqlandi</b>.\n` +
-			'Kim bu komandadan foydalana olishi kerak?',
-			inlineKeyboard(roleKbRow({ currentRole: role, newCommand }))
+			`✅ <b>Successfully added <code>!${isValidName[1]}</code></b>.\n` +
+			'Who should be able to use it?',
+			inlineKeyboard(roleKbRow({ currentRole: role, newCommand })),
 		);
 	}
 

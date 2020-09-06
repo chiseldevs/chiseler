@@ -3,18 +3,19 @@
 const R = require('ramda');
 const { optional, passThru } = require('telegraf');
 
+const { permit } = require('../../stores/user');
+
+const { html, lrm } = require('../../utils/html');
 const { excludeLinks = [] } = require('../../utils/config').config;
 
 if (excludeLinks === false || excludeLinks === '*') {
-
-	/** @type { import('../../typings/context').GuardMiddlewareFn } */
 	module.exports = passThru();
 	return;
 }
 
 const isChannelForward = R.pathEq(
 	[ 'message', 'forward_from_chat', 'type' ],
-	'channel'
+	'channel',
 );
 const fromAdmin = R.pathEq([ 'from', 'status' ], 'admin');
 
@@ -24,7 +25,7 @@ const capturingGroups = R.tail;
 
 const toUsername = R.compose(
 	capturingGroups,
-	R.match(/^(?:@|(?:https?:\/\/)?(?:t\.me|telegram\.(?:me|dog))\/)(\w+)/i)
+	R.match(/^(?:@|(?:https?:\/\/)?(?:t\.me|telegram\.(?:me|dog))\/)(\w+)/i),
 );
 
 const customWhitelist = R.pipe(
@@ -46,11 +47,16 @@ const pred = R.allPass([
 ]);
 
 /** @param { import('../../typings/context').ExtendedContext } ctx */
-const handler = ctx => {
-	ctx.deleteMessage();
+const handler = async (ctx, next) => {
+	if (await permit.revoke(ctx.from)) {
+		await ctx.replyWithHTML(html`${lrm}${ctx.from.first_name} used 🎟 permit!`);
+		return next();
+	}
+
+	ctx.deleteMessage().catch(() => null);
 	return ctx.warn({
 		admin: ctx.botInfo,
-		reason: 'Kanaldan qayta oshirish',
+		reason: 'Channel forward',
 		userToWarn: ctx.from,
 		mode: 'auto',
 	});
