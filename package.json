@@ -20,7 +20,9 @@
     "telegram"
   ],
   "author": "Genemator Sakhib <genemators@gmail.com> (https://genemator.me)",
-  "contributors": [],
+  "contributors": [
+    "Sara Marchiafava <genestatics@gmail.com> (https://genemator.me"
+  ],
   "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/chiseldevs/chiseler/issues"
