@@ -1,10 +1,12 @@
-<p align="center">
-  <img src="assets/logo.png" width="180" height="180">
-  <h1 align="center">The Guard Bot</h1>
-</p>
-The Guard is a Telegram bot made to help admins manage their groups.
+<p align="center"><a href="https://chisel.uz" target="_blank"><img height="300" width="300" src="./assets/logo.png"/></a></p>
 
-Initially created to moderate [The Devs Network](https://thedevs.network).
+<h2 align="center">Chisel Devs Guard Bot</h2>
+
+<p align="center"><a href="https://t.me/westmans_bot"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Heroku&message=deployed&logoColor=eceff4&logo=github&colorA=4c566a&colorB=88c0d0"/></a></p>
+
+<p align="center"> Elegant Group Manager for <a href="https://wiut.uz" target="_blank">Chisel Devs</a>'s groups.</p>
+
+<p align="center">Send or share your messages & contents privately with the help of our <a href="https://t.me/westmans_bot" target="_blank">telegram bot</a>.</p>
 
 **NOTE: The Guard is in beta phase;**
 **it has known issues, but it's successfully being used in production**
