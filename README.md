@@ -21,7 +21,7 @@ You need [Node.js](https://nodejs.org/) (>= 12) to run this bot.
 You need to have [docker](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-from-a-package) installed on your machine.
 
 1. Create a bot via [@BotFather](https://t.me/BotFather) and grab a **token**.
-2. Clone this repository or [download zip](https://github.com/TheDevs-Network/the-guard-bot/archive/master.zip).
+2. Clone this repository or [download zip](https://github.com/chiseldevs/chiseler/archive/master.zip).
 3. Copy `example.config.js` to `config.js` and edit it.
 4. Run `docker build -t the_guard_bot .` to build image.
 5. Run `docker run -v $(pwd)/data:/app/data --rm -itd the_guard_bot` to start the bot.
