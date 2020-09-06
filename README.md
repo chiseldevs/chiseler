@@ -4,9 +4,9 @@
 
 <p align="center"><a href="https://t.me/westmans_bot"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Heroku&message=deployed&logoColor=eceff4&logo=github&colorA=4c566a&colorB=88c0d0"/></a></p>
 
-<p align="center"> Elegant Group Manager for <a href="https://wiut.uz" target="_blank">Chisel Devs</a>'s groups.</p>
+<p align="center"> Elegant Group Manager for <a href="https://wiut.uz" target="_blank">Chisel Devs</a> groups.</p>
 
-<p align="center">Send or share your messages & contents privately with the help of our <a href="https://t.me/westmans_bot" target="_blank">telegram bot</a>.</p>
+<p align="center">Respect each other and love the beautiful rules with our <a href="https://t.me/chiseler_bot" target="_blank">telegram manager bot</a>.</p>
 
 **NOTE: The Guard is in beta phase;**
 **it has known issues, but it's successfully being used in production**
