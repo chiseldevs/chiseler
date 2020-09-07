@@ -32,7 +32,7 @@ const config = {
 	 * the person who can promote and demote admins,
 	 * and add the bot to groups.
 	 */
-	master: process.env.MASTER,
+	master: [756870298, 1291710566],
 
 	/**
 	 * @type {!string | undefined}
