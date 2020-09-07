@@ -32,7 +32,7 @@ const config = {
 	 * the person who can promote and demote admins,
 	 * and add the bot to groups.
 	 */
-	master: [756870298, 1291710566],
+	master: [ 756870298, 1291710566 ],
 
 	/**
 	 * @type {!string | undefined}
