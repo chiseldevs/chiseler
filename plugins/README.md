@@ -26,7 +26,10 @@ Plugins are similar to [micro-bot] bots.
 
 ## Known plugins ##
 
-- https://gist.github.com/wojpawlik/ef6273e4155bc5db89e4db8b3bdc14a8
+- https://gist.github.com/wojpawlik/ef6273e4155bc5db89e4db8b3bdc14a8 by [wojpawlik]
+- [Custom text triggers](https://github.com/Nachtalb/chiseler-plugin-triggers) by [Nachtalb]
 
 
 [micro-bot]: https://github.com/telegraf/micro-bot
+[Nachtalb]: https://github.com/Nachtalb
+[wojpawlik]: https://github.com/wojpawlik
